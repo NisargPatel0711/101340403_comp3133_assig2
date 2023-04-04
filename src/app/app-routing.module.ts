@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'add', component:AddEmployeeComponent},
   {path: 'login', component:LoginComponent},
   {path: 'signup', component:SignupComponent},
-  {path: 'view', component:ViewEmployeeComponent},
+  {path: 'view/:id', component:ViewEmployeeComponent},
+  {path: 'edit/:id', component:AddEmployeeComponent},
   {path: '**', redirectTo: 'listings'}
 ];
 

@@ -1,2 +1,46 @@
 <app-navbar></app-navbar>
-<p>view-employee works!</p>
+<div class="container mt-3">
+    <h1 class="text-center">View Employee</h1>
+    <div class="d-flex justify-content-center align-items-center mt-4">
+        <div class="border rounded p-4  w-50">            
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th scope="row">First Name</th>
+                        <td>{{employee.first_name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last Name</th>
+                        <td>{{employee.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>{{employee.email}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gender</th>
+                        <td>{{employee.gender}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Salary</th>
+                        <td>$ {{employee.salary}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex align-items-center justify-content-center mt-4">
+                <a
+                    class="btn btn-primary me-3"
+                    [routerLink]="['/edit', employee.id]"
+                    routerLinkActive="router-link-active"
+                >
+                    <i class="bi bi-pencil-square me-2"></i>
+                    Update
+                </a>
+                <a class="btn btn-danger" [routerLink]="['/']" routerLinkActive="router-link-active" >
+                    <i class="bi bi-x-circle-fill me-2"></i>
+                    Cancel
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -26,13 +26,13 @@
                 <td>{{employee.gender}}</td>
                 <td>{{employee.salary}}</td>
                 <td>
-                    <a class="btn btn-primary me-3" [routerLink]="['/view/employee._id']"
+                    <a class="btn btn-primary me-3" [routerLink]="['/view', employee.id]"
                         routerLinkActive="router-link-active">
                         <i class="bi bi-eye-fill me-2"></i>
                         View
                     </a>
 
-                    <a class="btn btn-secondary me-3" [routerLink]="['/edit/employee._id']"
+                    <a class="btn btn-secondary me-3" [routerLink]="['/edit', employee.id]"
                         routerLinkActive="router-link-active">
                         <i class="bi bi-pencil-square me-2"></i>
                         Update
