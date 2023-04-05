@@ -1,56 +1,56 @@
 <app-navbar></app-navbar>
 <div class="container mt-3">
     <h1 class="text-center">
-        Add
+        {{isEdit ? "Edit" : "Add"}} Employee
     </h1>
     <div class="d-flex justify-content-center align-items-center">
         <div class="border rounded p-5  w-50">
             <div id="liveAlertPlaceholder"></div>
-            <form>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="mb-3">
                     <label htmlFor="first_name" class="form-label">
                         First Name
                     </label>
                     <input type="text" class="form-control" name="first_name" id="first_name" required="true" value=""
-                        [(ngModel)]="employeeForm.first_name" [ngModelOptions]="{standalone: true}" placeholder="Enter your first name here..." />
+                        formControlName="first_name" placeholder="Enter your first name here..." />
                 </div>
                 <div class="mb-3">
                     <label htmlFor="last_name" class="form-label">
                         Last Name
                     </label>
                     <input type="text" class="form-control" name="last_name" id="last_name" required=true value=""
-                        [(ngModel)]="employeeForm.last_name" [ngModelOptions]="{standalone: true}" placeholder="Enter your last name here..." />
+                        formControlName="last_name" placeholder="Enter your last name here..." />
                 </div>
                 <div class="mb-3">
                     <label htmlFor="email" class="form-label">
                         Email
                     </label>
                     <input type="email" class="form-control" name="email" id="email" required="true"
-                        [(ngModel)]="employeeForm.email" [ngModelOptions]="{standalone: true}" placeholder="Enter your email address here..." />
+                        formControlName="email" placeholder="Enter your email address here..." />
                 </div>
                 <div class="mb-3">
                     <label htmlFor="last_name" class="form-label">
                         Gender
                     </label>
                     <select class="form-select" name="gender" aria-label="Default select example" required="true"
-                        [(ngModel)]="employeeForm.gender">
+                        formControlName="gender">
                         <option selected disabled value="">
                             Choose gender
                         </option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label htmlFor="salary" class="form-label">
                         Salary
                     </label>
-                    <input type="number" class="form-control" name="number" id="salary" [(ngModel)]="employeeForm.salary" [ngModelOptions]="{standalone: true}"
+                    <input type="number" class="form-control" name="salary" id="salary" formControlName="salary"
                         required="true" step="any" placeholder="Enter your annual salary here..." />
                 </div>
                 <div class="d-flex align-items-center justify-content-around mt-4">
-                    <button type="submit" class="btn btn-success" (click)="onAddEmployeeButtonClick()">
+                    <button type="submit" class="btn btn-success" (click)='addNewEmployee()'>
                         <i class="bi bi-clipboard2-check-fill me-2"></i>
                         Save
                     </button>
