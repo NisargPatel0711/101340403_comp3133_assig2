@@ -33,6 +33,7 @@ const delete_employee = gql`
 })
 export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
+  isLoading!: boolean;
   title = '101340403_comp3133_assig2';
   error: any;
   constructor(private apollo: Apollo) {}
@@ -42,7 +43,8 @@ export class EmployeeListComponent implements OnInit {
         query: get_employees,
       })
       .valueChanges.subscribe(({ data, loading }) => {
-        console.log(loading);
+        this.isLoading = loading
+        console.log(this.isLoading);
         this.employees = data.getEmployees;
         console.log(data.getEmployees);
       });
