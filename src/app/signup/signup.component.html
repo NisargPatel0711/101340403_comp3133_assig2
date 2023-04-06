@@ -6,7 +6,7 @@
         <h2 class="text-center mb-5">Create an account</h2>
         <div id="liveAlertPlaceholder"></div>
 
-        <form class="form"
+        <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()"
             >
             <div class="input-group has-validation mb-4">
                 <span class="input-group-text">
@@ -14,7 +14,7 @@
                 </span>
                 <div class="form-floating">
                     <input type="text" class="form-control" id="username" placeholder="Username" required
-                        ref={usernameRef} />
+                    formControlName="username" />
                     <label for="username">Username</label>
                 </div>
                 <div class="invalid-feedback">
@@ -27,7 +27,7 @@
                 </span>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="password" placeholder="Password" required
-                        ref={passwordRef} />
+                    formControlName="password" />
                     <label for="username">Password</label>
                 </div>
                 <div class="invalid-feedback">
@@ -40,7 +40,7 @@
                 </span>
                 <div class="form-floating">
                     <input type="email" class="form-control" id="email" placeholder="Email" required
-                        ref={emailRef} />
+                    formControlName="email" />
                     <label for="email">Email</label>
                 </div>
                 <div class="invalid-feedback">
