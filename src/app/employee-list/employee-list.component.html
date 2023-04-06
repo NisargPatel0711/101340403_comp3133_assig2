@@ -55,9 +55,6 @@
             </tr>
         </tbody>
     </table>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete1">
-        Launch static backdrop modal
-    </button>
     <div *ngFor="let employee of employees; index as indexOfelement;">
         <div class="modal fade" id="delete{{indexOfelement}}" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
