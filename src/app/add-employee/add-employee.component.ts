@@ -115,7 +115,7 @@ export class AddEmployeeComponent implements OnInit {
             getEmployeeByIdId: this.id,
           },
         })
-        .valueChanges.subscribe(({ data, loading }) => {          
+        .valueChanges.subscribe(({ data, loading }) => {
           this.form.setValue({
             first_name: data.getEmployeeByID.first_name,
             last_name: data.getEmployeeByID.last_name,
@@ -140,11 +140,11 @@ export class AddEmployeeComponent implements OnInit {
       .mutate<any>({
         mutation: add_employee,
         variables: {
-          firstName: this.employee.first_name,
-          lastName: this.employee.last_name,
-          email: this.employee.email,
-          gender: this.employee.gender,
-          salary: this.employee.salary,
+          firstName: this.form.value.first_name,
+          lastName: this.form.value.last_name,
+          email: this.form.value.email,
+          gender: this.form.value.gender,
+          salary: this.form.value.salary,
         },
       })
       .pipe(
@@ -155,15 +155,19 @@ export class AddEmployeeComponent implements OnInit {
           return of({ error: error });
         })
       )
-      .subscribe((data) => {
-        console.log(data);
-        // window.location.href = '/list';
+      .subscribe({
+        next: (val: any) => {
+          if (val.data.addEmployee.status == true) {
+            alert('Employee saved successfully.')
+            window.location.href = '/list';
+          } else if (val.data.addEmployee.status == false) {
+            alert(val.data.addEmployee.message)
+          }
+        },
       });
   }
 
   editEmployee(id: string) {
-    console.log(this.form.value);
-    
     this.apollo
       .mutate<any>({
         mutation: edit_employee,
@@ -184,9 +188,15 @@ export class AddEmployeeComponent implements OnInit {
           return of({ error: error });
         })
       )
-      .subscribe((data) => {
-        console.log(data);
-        window.location.href = '/list';
+      .subscribe({
+        next: (val: any) => {
+          if (val.data.updateEmployee.status == true) {
+            alert('Employee updated successfully.')
+            window.location.href = '/list';
+          } else if (val.data.updateEmployee.status == false) {
+            alert(val.data.updateEmployee.message)
+          }
+        },
       });
   }
 }
